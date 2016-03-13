@@ -55,7 +55,6 @@
 			'esri/symbols/SimpleLineSymbol',
 			'esri/graphic',
 			'esri/dijit/Legend',
-			"dojo/dom",
 			"dojo/dom-construct"
 			], function(
 				dom,
@@ -70,7 +69,6 @@
 				SimpleLineSymbol,
 				Graphic,
 				Legend,
-				dom,
 				domConstruct
 				) {
 			var map = new Map('map', {
@@ -81,8 +79,8 @@
 			});
 
 			// Assign the URL of the Census feature service to a variable
-			url = 'http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/'
-			+ 'la_county_labor_centroid/FeatureServer/0';
+			url = 'http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services' +
+			'/la_county_labor_centroid/FeatureServer/0';
 
 			// Add a feature service as a layer to the map
 			var featureLayer = new FeatureLayer(url);
@@ -90,9 +88,9 @@
 
 			// Event listener for layer load event to build legend
 			featureLayer.on("load", function () {
-				console.log("event listener for legend triggered!")
-				createLegend(map, featureLayer)
-			})
+				console.log("event listener for legend triggered!");
+				createLegend(map, featureLayer);
+			});
 
 			// Add a legend dijit
 			function createLegend(map, layer){
@@ -120,7 +118,7 @@
 			}
 
 			// Set a definition query on the feature layer
-			featureLayer.setDefinitionExpression('TOTAL_POP > 2500')
+			featureLayer.setDefinitionExpression('TOTAL_POP > 2500');
 
 			// listener for population div change
 			on(dom.byId('population'), 'change', function(e) {
